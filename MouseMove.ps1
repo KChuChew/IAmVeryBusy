@@ -1,23 +1,24 @@
-﻿param($minutes = 60)
+﻿$myshell = New-Object -com "Wscript.Shell"
 
-$myshell = New-Object -com "Wscript.Shell"
-
-$moveLeft = $true;
-$Pos = [System.Windows.Forms.Cursor]::Position
 
 while($true) 
 {    
     
-    If($moveLeft) 
+    <#If($moveLeft) 
     {
-        [System.Windows.Forms.Cursor]::Position = New-Object System.Drawing.Point((($Pos.X) - 100) , $Pos.Y)
+        #[System.Windows.Forms.Cursor]::Position = New-Object System.Drawing.Point((($Pos.X) - 100) , $Pos.Y)
         $moveLeft = $false
     }
     Else 
     {
-        [System.Windows.Forms.Cursor]::Position = New-Object System.Drawing.Point((($Pos.X) + 100) , $Pos.Y)
+        #[System.Windows.Forms.Cursor]::Position = New-Object System.Drawing.Point((($Pos.X) + 100) , $Pos.Y)
         $moveLeft = $true
-    }
-    
-    Start-Sleep -Seconds 30
+    }#>
+
+    #$Pos = [System.Windows.Forms.Cursor]::Position
+    #Send a click at a specified point
+    #[Clicker]::LeftClickAtPoint($Pos.X, $Pos.Y)
+    $myshell.SendKeys(".")
+
+    Start-Sleep -Seconds 60
 }
